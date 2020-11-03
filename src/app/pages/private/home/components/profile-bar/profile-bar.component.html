@@ -13,7 +13,7 @@
     viewBox="0 0 24 24"
     width="24"
     height="24"
-    class="mx-2"
+    class="mx-2 icons"
   >
     <path
       fill="#919191"
@@ -26,10 +26,9 @@
     viewBox="0 0 24 24"
     width="24"
     height="24"
-    class="mx-2"
+    class="mx-2 icons"
     data-toggle="modal"
     data-target="#exampleModal"
-    style="cursor: pointer"
   >
     <path
       fill="#919191"
@@ -41,7 +40,7 @@
     viewBox="0 0 24 24"
     width="24"
     height="24"
-    class="mx-2"
+    class="mx-2 icons"
   >
     <path
       fill="#919191"
@@ -122,23 +121,6 @@
         </form>
         <form *ngIf="isPhone">
           <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="miSelect">Choose Country</label>
-              <select
-                name="miselect"
-                id="miSelect"
-                class="form-control"
-                [(ngModel)]="selectedCode"
-                [ngModelOptions]="{ standalone: true }"
-              >
-                <option
-                  [value]="codePhone.dial_code"
-                  *ngFor="let codePhone of codesPhone"
-                >
-                  {{ codePhone.name }}
-                </option>
-              </select>
-            </div>
             <div class="form-group col-md">
               <label for="phone">Phone</label>
               <input type="number" id="phone" class="form-control" />

@@ -4,7 +4,17 @@
       <div class="row no-gutters">
         <div class="col-3">
           <app-profile-bar></app-profile-bar>
-          <app-inbox-chat></app-inbox-chat>
+          <div class="inboxChat">
+            <app-inbox-chat
+              *ngFor="let inbox of chats; let i = index"
+              (click)="onSelectInbox(i)"
+              [profilePic]="inbox.icon"
+              [name]="inbox.title"
+              [msgTime]="inbox.lastMsg"
+              [msgPreview]="inbox.msgPreview"
+              [isRead]="inbox.isRead"
+            ></app-inbox-chat>
+          </div>
         </div>
         <div class="col">
           <app-chat-area></app-chat-area>
