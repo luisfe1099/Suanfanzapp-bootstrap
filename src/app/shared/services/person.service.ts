@@ -20,4 +20,7 @@ export class PersonService {
   public login(person): Observable<any> {
     return this.httpClient.post(this.url + 'save', person);
   }
+  public findPerson(email): Observable<any> {
+    return this.httpClient.get(this.url + 'findByNumberOrEmail/' + email);
+  }
 }

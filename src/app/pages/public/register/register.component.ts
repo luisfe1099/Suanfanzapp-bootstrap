@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     private codesService: CodesService,
     private personService: PersonService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getPlacesCode();
@@ -42,6 +42,8 @@ export class RegisterComponent implements OnInit {
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
         number: ['', [Validators.required, Validators.pattern('[0-9]*')]],
+        id_number_format: ['', Validators.required],
+
       },
       { validator: this.checkPasswords }
     );
@@ -61,12 +63,19 @@ export class RegisterComponent implements OnInit {
   doRegister(e) {
     e.preventDefault();
     if (this.registerForm.valid) {
-      this.personService
-        .savePerson(this.registerForm.value)
-        .subscribe((data) => {
-          alert('Usuario creado existosamente');
-          this.goToLogin();
-        });
+      this.personService.findPerson(this.registerForm.get('email').value).subscribe(data => {
+        alert('Ya existe una persona registrada con este correo: ' + this.registerForm.get('email').value);
+      },
+        (error) => {
+          this.personService.savePerson(this.registerForm.value).subscribe((data) => {
+            alert('Usuario creado existosamente');
+            this.goToLogin();
+          },
+            (error) => {
+              alert(error.error.message);
+            }
+          );
+        })
     } else {
       alert('Verifique los campos');
     }

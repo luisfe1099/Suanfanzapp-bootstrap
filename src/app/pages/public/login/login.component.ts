@@ -11,27 +11,23 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  login: Login = {
-    numberoremail: '',
-    password: '',
-  };
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      place1: ['', Validators.required],
+      numberoremail: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   doLogin() {
     if (this.loginForm.valid) {
-      this.authService.login(this.login).subscribe(
+      this.authService.login(this.loginForm.value).subscribe(
         (data) => {
           if (data === null) {
             alert('Nelson Mandela');
@@ -48,5 +44,5 @@ export class LoginComponent implements OnInit {
       alert('Verifique los campos.');
     }
   }
-  
+
 }
