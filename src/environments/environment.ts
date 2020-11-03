@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlCodes: 'https://countriesnow.space/api/v0.1/countries/codes',
+  urlApi: 'http://localhost:3000/',
 };
 
 /*
