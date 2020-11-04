@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { InboxChatComponent } from './components/inbox-chat/inbox-chat.component';
 import { ChatAreaComponent } from './components/chat-area/chat-area.component';
@@ -18,6 +18,6 @@ import { ProfileBarComponent } from './components/profile-bar/profile-bar.compon
     ContactsComponent,
     ProfileBarComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class HomeModule {}

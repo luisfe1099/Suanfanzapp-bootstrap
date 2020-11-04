@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 import { UserI } from '../interfaces/UserI';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class PersonService {
   url: string;
@@ -22,5 +22,8 @@ export class PersonService {
   }
   public findPerson(email): Observable<any> {
     return this.httpClient.get(this.url + 'findByNumberOrEmail/' + email);
+  }
+  public saveContact(body): Observable<any> {
+    return this.httpClient.post(this.url + 'contact', body);
   }
 }
