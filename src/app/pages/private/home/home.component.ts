@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   chats: Array<ChatI> = [
     {
       title: "Santi",
-      icon: "/assets/img/ppRightBar.png",
+      icon: "https://picsum.photos/200/300?random=1",
       isRead: true,
       msgPreview: "entonces ando usando fotos reales hahaha",
       lastMsg: "11:13",
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       title: "Pablo Bejarano",
-      icon: "/assets/img/ppInbox.png",
+      icon: "https://picsum.photos/200/300?random=2",
       isRead: true,
       msgPreview: "Estrenando componente",
       lastMsg: "18:30",
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       title: "Pablo Bejarano 2",
-      icon: "/assets/img/ppInbox.png",
+      icon: "https://picsum.photos/200/300?random=3",
       isRead: true,
       msgPreview: "Nice front 😎",
       lastMsg: "23:30",
