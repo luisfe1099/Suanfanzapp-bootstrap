@@ -19,9 +19,8 @@ export class ProfileBarComponent implements OnInit {
   newContact: ContactI = {
     contact_id: '',
     contact_name: '',
-    person_id_from: ''
+    person_id_from: '',
   };
-
   newContactForm: FormGroup;
 
   constructor(
@@ -29,7 +28,7 @@ export class ProfileBarComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private personService: PersonService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getPlacesCode();
@@ -50,31 +49,35 @@ export class ProfileBarComponent implements OnInit {
   }
 
   saveContact() {
-    this.personService
-      .findPerson(this.newContactForm.get('emailornumber').value)
-      .subscribe(
-        (data) => {
-          this.newContact.contact_id = data[0].number;
-          this.newContact.contact_name = this.newContactForm.get('name').value;
-          this.newContact.person_id_from = JSON.parse(
-            localStorage.getItem('user')
-          )[0].number;
-          console.log(JSON.parse(
-            localStorage.getItem('user')
-          )[0].number);
+    if (!this.newContactForm.valid) {
+      alert('Verifique los campos');
+    } else {
+      this.personService
+        .findPerson(this.newContactForm.get('emailornumber').value)
+        .subscribe(
+          (data) => {
+            this.newContact.contact_id = data[0].number;
+            this.newContact.contact_name = this.newContactForm.get(
+              'name'
+            ).value;
+            this.newContact.person_id_from = JSON.parse(
+              localStorage.getItem('user')
+            )[0].number;
+            console.log(JSON.parse(localStorage.getItem('user'))[0].number);
 
-          this.personService.saveContact(this.newContact).subscribe(
-            (data) => {
-              alert('Creado existosamente.');
-            },
-            (error) => {
-              alert(error.error.message);
-            }
-          );
-        },
-        (error) => {
-          alert(error.error.message);
-        }
-      );
+            this.personService.saveContact(this.newContact).subscribe(
+              (data) => {
+                alert('Creado existosamente.');
+              },
+              (error) => {
+                alert(error.error.message);
+              }
+            );
+          },
+          (error) => {
+            alert(error.error.message);
+          }
+        );
+    }
   }
 }
