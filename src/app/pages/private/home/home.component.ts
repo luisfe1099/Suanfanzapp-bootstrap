@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { UserI } from 'src/app/shared/interfaces/UserI';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ChatService } from 'src/app/shared/services/chat.service';
+import { PersonService } from 'src/app/shared/services/person.service';
 import { ChatI } from './interfaces/ChatI';
 import { MessageI } from './interfaces/MessageI';
 
@@ -11,13 +13,31 @@ import { MessageI } from './interfaces/MessageI';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  user: UserI = {
+    email: '',
+    lastname: '',
+    name: '',
+    number: 0,
+    password: ''
+  };
+  chat2I: ChatI = {
+    icon: '',
+    isRead: false,
+    lastMsg: '',
+    msgPreview: '',
+    msgs: [],
+    title: ''
+  };
+
   subscriptionList: {
     connection: Subscription;
     msgs: Subscription;
   } = {
-    connection: undefined,
-    msgs: undefined,
-  };
+      connection: undefined,
+      msgs: undefined,
+    };
+
+  chats2: Array<ChatI> = [];
 
   chats: Array<ChatI> = [
     {
@@ -70,13 +90,42 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     public authService: AuthService,
-    public chatService: ChatService
-  ) {}
+    public chatService: ChatService,
+    public personService: PersonService
+  ) { }
 
   ngOnInit(): void {
     this.initChat();
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.findContactList();
   }
-
+  findContactList() {
+    this.personService.contactList(this.user[0].number).subscribe(data => {
+      console.log(data);
+      data.forEach(res => {
+        this.chat2I.title = res.tittle;
+        this.chat2I.icon = res.icon;
+        /*
+        this.personService.lastMessage(res.chat_id).subscribe(data1 => {
+          this.chat2I.msgPreview = data1[0].msgPreview;
+          this.chat2I.lastMsg = data1[0].date;
+          this.personService.allMessage(res.chat_id).subscribe(data2 => {
+            this.chat2I.msgs = data2;
+            //console.log(this.chat2I);;
+          })
+        })*/
+        console.log(this.chat2I);
+        this.chat2I = {
+          icon: '',
+          isRead: false,
+          lastMsg: '',
+          msgPreview: '',
+          msgs: [],
+          title: ''
+        };
+      });
+    })
+  }
   ngOnDestroy(): void {
     this.destroySubscriptionList();
     this.chatService.disconnect();

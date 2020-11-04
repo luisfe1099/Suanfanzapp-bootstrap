@@ -26,4 +26,13 @@ export class PersonService {
   public saveContact(body): Observable<any> {
     return this.httpClient.post(this.url + 'contact', body);
   }
+  public contactList(id): Observable<any> {
+    return this.httpClient.get(this.url + 'contactList/' + id);
+  }
+  public allMessage(id): Observable<any> {
+    return this.httpClient.get(this.url + 'allMessage/' + id);
+  }
+  public lastMessage(id): Observable<any> {
+    return this.httpClient.get(this.url + 'lastMessage/' + id);
+  }
 }
