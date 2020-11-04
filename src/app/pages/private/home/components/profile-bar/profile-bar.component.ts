@@ -16,7 +16,11 @@ export class ProfileBarComponent implements OnInit {
   isPhone: boolean = false;
   codesPhone: CodesPhoneI[] = [];
   selectedCode: CodesPhoneI;
-  newContact: ContactI;
+  newContact: ContactI = {
+    contact_id: '',
+    contact_name: '',
+    person_id_from: ''
+  };
 
   newContactForm: FormGroup;
 
@@ -25,7 +29,7 @@ export class ProfileBarComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private personService: PersonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getPlacesCode();
@@ -50,11 +54,15 @@ export class ProfileBarComponent implements OnInit {
       .findPerson(this.newContactForm.get('emailornumber').value)
       .subscribe(
         (data) => {
-          this.newContact.contact_id = data.number;
+          this.newContact.contact_id = data[0].number;
           this.newContact.contact_name = this.newContactForm.get('name').value;
           this.newContact.person_id_from = JSON.parse(
             localStorage.getItem('user')
-          ).number;
+          )[0].number;
+          console.log(JSON.parse(
+            localStorage.getItem('user')
+          )[0].number);
+
           this.personService.saveContact(this.newContact).subscribe(
             (data) => {
               alert('Creado existosamente.');
