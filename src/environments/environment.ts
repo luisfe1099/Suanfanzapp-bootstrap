@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   urlCodes: 'https://countriesnow.space/api/v0.1/countries/codes',
-  urlApi: 'http://localhost:3000/',
+  urlApi: 'https://158c72e895f6.ngrok.io/',
 };
 
 /*

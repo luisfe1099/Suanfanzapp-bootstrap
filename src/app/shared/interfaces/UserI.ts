@@ -3,6 +3,8 @@ export interface UserI {
     name: string;
     lastname: string;
     password?: string;
-    number?: number;
-
+    number: number;
+    url_img_profile: string;
+    id_number_format: string;
+    phone: string;
 }

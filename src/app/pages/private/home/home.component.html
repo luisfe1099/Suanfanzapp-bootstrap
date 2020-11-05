@@ -3,7 +3,7 @@
     <div class="card shadow" style="width: 90%; margin-top: 30px; height: 90vh">
       <div class="row no-gutters">
         <div class="col-3">
-          <app-profile-bar></app-profile-bar>
+          <app-profile-bar [profilePic]="user[0].url_img_profile"></app-profile-bar>
           <div class="inboxChat">
             <app-inbox-chat
               *ngFor="let inbox of chats; let i = index"

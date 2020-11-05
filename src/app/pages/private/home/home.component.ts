@@ -18,7 +18,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     lastname: '',
     name: '',
     number: 0,
-    password: ''
+    password: '',
+    url_img_profile: '',
+    id_number_format: '',
+    phone: ''
   };
   chat2I: ChatI = {
     icon: '',
@@ -97,8 +100,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initChat();
     this.user = JSON.parse(localStorage.getItem('user'));
-    this.findContactList();
+    this.findContactList();    
   }
+  
   findContactList() {
     this.personService.contactList(this.user[0].number).subscribe(data => {
       console.log(data);

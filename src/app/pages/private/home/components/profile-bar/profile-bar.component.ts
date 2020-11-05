@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CodesPhoneI } from 'src/app/shared/interfaces/CodesPhoneI';
+import { UserI } from 'src/app/shared/interfaces/UserI';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CodesService } from 'src/app/shared/services/codes.service';
 import { PersonService } from 'src/app/shared/services/person.service';
@@ -12,6 +13,10 @@ import { ContactI } from '../../interfaces/ContactI';
   styleUrls: ['./profile-bar.component.scss'],
 })
 export class ProfileBarComponent implements OnInit {
+  @ViewChild('modal') modal: ElementRef;
+
+  @Input() profilePic: string;
+
   isEmail: boolean = false;
   isPhone: boolean = false;
   codesPhone: CodesPhoneI[] = [];
@@ -22,6 +27,8 @@ export class ProfileBarComponent implements OnInit {
     person_id_from: '',
   };
   newContactForm: FormGroup;
+  editProfileForm: FormGroup;
+  user: UserI;
 
   constructor(
     private codesService: CodesService,
@@ -31,10 +38,21 @@ export class ProfileBarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
     this.getPlacesCode();
     this.newContactForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       emailornumber: ['', [Validators.required]],
+    });
+    this.editProfileForm = this.formBuilder.group({
+      name: this.user[0].name,
+      lastname: this.user[0].lastname,
+      numberFormat: this.user[0].numberFormat,
+      number: this.user[0].number,
+      password: ['', Validators.required],
+      url_img_profile: this.user[0].url_img_profile,
+      email: this.user[0].email,
+      id_number_format: this.user[0].id_number_format,
     });
   }
 
@@ -46,6 +64,10 @@ export class ProfileBarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  private closeModal(): void {
+    this.modal.nativeElement.click();
   }
 
   saveContact() {
@@ -68,6 +90,8 @@ export class ProfileBarComponent implements OnInit {
             this.personService.saveContact(this.newContact).subscribe(
               (data) => {
                 alert('Creado existosamente.');
+                this.closeModal();
+                window.location.reload();
               },
               (error) => {
                 alert(error.error.message);
@@ -78,6 +102,20 @@ export class ProfileBarComponent implements OnInit {
             alert(error.error.message);
           }
         );
+    }
+  }
+
+  updateProfile() {
+    if (!this.editProfileForm.valid) {
+      alert('Verifique los campos');
+    } else {
+      this.personService
+        .updatePerson(this.editProfileForm.value)
+        .subscribe((data) => {
+          alert('Usuario actualizado correctamente.');
+          localStorage.setItem('user', JSON.stringify(data));
+          window.location.reload();
+        });
     }
   }
 }

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value).subscribe(
         (data) => {
           if (data === null) {
-            alert('Nelson Mandela');
+            alert('ERROR LOGIN');
           } else {
             window.localStorage.setItem('user', JSON.stringify(data));
             this.router.navigate(['']);

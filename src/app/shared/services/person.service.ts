@@ -17,6 +17,9 @@ export class PersonService {
   public savePerson(person): Observable<any> {
     return this.httpClient.post(this.url + 'save', person);
   }
+  public updatePerson(person): Observable<any> {
+    return this.httpClient.put(this.url + 'update', person);
+  }
   public login(person): Observable<any> {
     return this.httpClient.post(this.url + 'save', person);
   }

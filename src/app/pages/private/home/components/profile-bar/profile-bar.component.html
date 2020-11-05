@@ -1,32 +1,77 @@
 <div class="navbar navbar-expand-lg" style="background-color: #ededed">
-  <a class="navbar-brand mr-auto">
-    <img src="https://www.usbcali.edu.co/sites/default/files/logo-pw-usb_0.png" width="40" height="40"
-      class="rounded-circle" />
+  <a
+    class="navbar-brand mr-auto"
+    data-target="#editProfile"
+    data-toggle="modal"
+  >
+    <img
+      [src]="profilePic"
+      width="40"
+      height="40"
+      class="rounded-circle"
+      style="cursor: pointer"
+    />
   </a>
-  <svg id="df9d3429-f0ef-48b5-b5eb-f9d27b2deba6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-    height="24" class="mx-2 icons">
-    <path fill="#919191"
-      d="M12.072 1.761a10.05 10.05 0 0 0-9.303 5.65.977.977 0 0 0 1.756.855 8.098 8.098 0 0 1 7.496-4.553.977.977 0 1 0 .051-1.952zM1.926 13.64a10.052 10.052 0 0 0 7.461 7.925.977.977 0 0 0 .471-1.895 8.097 8.097 0 0 1-6.012-6.386.977.977 0 0 0-1.92.356zm13.729 7.454a10.053 10.053 0 0 0 6.201-8.946.976.976 0 1 0-1.951-.081v.014a8.097 8.097 0 0 1-4.997 7.209.977.977 0 0 0 .727 1.813l.02-.009z">
-    </path>
+  <svg
+    id="df9d3429-f0ef-48b5-b5eb-f9d27b2deba6"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    class="mx-2 icons"
+  >
+    <path
+      fill="#919191"
+      d="M12.072 1.761a10.05 10.05 0 0 0-9.303 5.65.977.977 0 0 0 1.756.855 8.098 8.098 0 0 1 7.496-4.553.977.977 0 1 0 .051-1.952zM1.926 13.64a10.052 10.052 0 0 0 7.461 7.925.977.977 0 0 0 .471-1.895 8.097 8.097 0 0 1-6.012-6.386.977.977 0 0 0-1.92.356zm13.729 7.454a10.053 10.053 0 0 0 6.201-8.946.976.976 0 1 0-1.951-.081v.014a8.097 8.097 0 0 1-4.997 7.209.977.977 0 0 0 .727 1.813l.02-.009z"
+    ></path>
     <path fill="#009588" d="M19 1.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"></path>
   </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mx-2 icons"
-    data-toggle="modal" data-target="#newContact">
-    <path fill="#919191"
-      d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z">
-    </path>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    class="mx-2 icons"
+    data-toggle="modal"
+    data-target="#newContact"
+  >
+    <path
+      fill="#919191"
+      d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z"
+    ></path>
   </svg>
   <div class="dropdown">
-    <a type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mx-2 icons">
-        <path fill="#919191"
-          d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z">
-        </path>
+    <a
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        class="mx-2 icons"
+      >
+        <path
+          fill="#919191"
+          d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"
+        ></path>
       </svg>
     </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" data-toggle="modal" data-target="#newGroup" style="cursor: pointer">New group</a>
-      <a class="dropdown-item" style="cursor: pointer" (click)="logout()">Logout</a>
+      <a
+        class="dropdown-item"
+        data-toggle="modal"
+        data-target="#newGroup"
+        style="cursor: pointer"
+        >New group</a
+      >
+      <a class="dropdown-item" style="cursor: pointer" (click)="logout()"
+        >Logout</a
+      >
     </div>
   </div>
 </div>
@@ -37,28 +82,49 @@
         <i class="fas fa-search"></i>
       </span>
     </div>
-    <input type="text" class="form-control" placeholder="Search or start a new chat" />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search or start a new chat"
+    />
   </div>
 </div>
-<div class="modal fade" id="newContact" tabindex="-1" aria-labelledby="newContactLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="newContact"
+  tabindex="-1"
+  aria-labelledby="newContactLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="newContactLabel">New Contact</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="row text-center">
           <div class="col">
-            <button class="btn btn-sm btn-outline-primary" (click)="isEmail = true; isPhone = false">
+            <button
+              class="btn btn-sm btn-outline-primary"
+              (click)="isEmail = true; isPhone = false"
+            >
               <i class="fas fa-envelope mr-2"></i>
               Add by email
             </button>
           </div>
           <div class="col">
-            <button class="btn btn-sm btn-outline-primary" (click)="isPhone = true; isEmail = false">
+            <button
+              class="btn btn-sm btn-outline-primary"
+              (click)="isPhone = true; isEmail = false"
+            >
               <i class="fas fa-phone-square-alt mr-2"></i>
               Add by phone
             </button>
@@ -67,40 +133,76 @@
         <br />
         <form *ngIf="isEmail" [formGroup]="newContactForm">
           <div class="form-group">
-            <label for="email">Name
-              <small *ngIf="
+            <label for="email"
+              >Name
+              <small
+                *ngIf="
                   !newContactForm.controls.name.valid &&
                   newContactForm.controls.name.touched
-                " class="form-text text-danger">
+                "
+                class="form-text text-danger"
+              >
                 Check this field.
               </small>
             </label>
-            <input type="name" class="form-control" id="name" aria-describedby="nameHelp" formControlName="name" />
-            <small id="nameHelp" class="form-text text-muted">Type the contact name</small>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              aria-describedby="nameHelp"
+              formControlName="name"
+            />
+            <small id="nameHelp" class="form-text text-muted"
+              >Type the contact name</small
+            >
           </div>
           <div class="form-group">
-            <label for="email">Email
-              <small *ngIf="
+            <label for="email"
+              >Email
+              <small
+                *ngIf="
                   !newContactForm.controls.emailornumber.valid &&
                   newContactForm.controls.emailornumber.touched
-                " class="form-text text-danger">
+                "
+                class="form-text text-danger"
+              >
                 Check this field.
               </small>
             </label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-              formControlName="emailornumber" />
-            <small id="emailHelp" class="form-text text-muted">Type the contact email</small>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              formControlName="emailornumber"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >Type the contact email</small
+            >
           </div>
         </form>
         <form *ngIf="isPhone" [formGroup]="newContactForm">
           <div class="form-group">
             <label for="email">Name </label>
-            <input type="name" class="form-control" id="name" aria-describedby="nameHelp" formControlName="name" />
-            <small id="nameHelp" class="form-text text-muted">Type the contact name</small>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              aria-describedby="nameHelp"
+              formControlName="name"
+            />
+            <small id="nameHelp" class="form-text text-muted"
+              >Type the contact name</small
+            >
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="number" id="phone" class="form-control" formControlName="emailornumber" />
+            <input
+              type="number"
+              id="phone"
+              class="form-control"
+              formControlName="emailornumber"
+            />
           </div>
         </form>
       </div>
@@ -108,17 +210,30 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary" (click)="saveContact()">Save contact</button>
+        <button type="button" class="btn btn-primary" (click)="saveContact()">
+          Save contact
+        </button>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="newGroup" tabindex="-1" aria-labelledby="newGroupLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="newGroup"
+  tabindex="-1"
+  aria-labelledby="newGroupLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="newGroupLabel">New Group</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -128,6 +243,120 @@
           Close
         </button>
         <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="editProfile"
+  tabindex="-1"
+  aria-labelledby="editProfileLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newGroupLabel">Edit Profile</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editProfileForm">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                aria-describedby="emailHelp"
+                formControlName="name"
+                formControl="name"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lastname">Lastname</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                formControlName="lastname"
+                formControl="lastname"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              formControlName="email"
+              formControl="email"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="urlimgprofile">URL Image Profile</label>
+            <input
+              type="text"
+              class="form-control"
+              id="urlimgprofile"
+              aria-describedby="emailHelp"
+              formControlName="url_img_profile"
+              formControl="url_img_profile"
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="id_number_format">Phone Code</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id_number_format"
+                formControlName="id_number_format"
+                formControl="id_number_format"
+                disabled
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="id_number_format">Phone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id_number_format"
+                formControlName="number"
+                formControl="number"
+                disabled
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="updateProfile()">Save changes</button>
       </div>
     </div>
   </div>
